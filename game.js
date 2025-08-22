@@ -4,15 +4,23 @@ var Keyboard = {
   R: 39,
   U: 38,
   D: 40,
-  keys: {},
+  keys: new Set(),
   listen: function (keys) {
-    pass;
+    window.addEventListener('keydown', this.keyDown.bind(this));
+    window.addEventListener('keyup', this.keyUp.bind(this));
   },
-  keyDown: function(key) {
-    pass;
+  keyDown: function(event) {
+    var keyCode = event.keyCode;
+    event.preventDefault();
+    this.keys.add(keyCode);
   },
-  keyUp: function(key) {
-    pass;
+  keyUp: function(event) {
+    var code = event.keyCode;
+    event.preventDefault();
+    this.keys.delete(code);
+  },
+  isDown: function(keyCode) {
+    return this.keys.has(keyCode);
   }
 }
 
@@ -51,10 +59,19 @@ const canvasSize = c;
 const stepSize = c/10;
 
 function update(player, c, s) {
-  if (Keyboard.isdown(Keyboard.L)) {player.pos.x -= s;}
-  if (Keyboard.isdown(Keyboard.R)) {player.pos.x += s;}
-  if (Keyboard.isdown(Keyboard.U)) {player.pos.y += s;}
-  if (Keyboard.isdown(Keyboard.D)) {player.pos.y -= s;}
+  if (Keyboard.isDown(Keyboard.L)) {player.pos.x -= s;}
+  if (Keyboard.isDown(Keyboard.R)) {player.pos.x += s;}
+  if (Keyboard.isDown(Keyboard.U)) {player.pos.y += s;}
+  if (Keyboard.isDown(Keyboard.D)) {player.pos.y -= s;}
+}
+
+function frame(player, c, s, tilemap) {
+  oldPos = player.pos;
+  update(player, c, s);
+  if (player.pos!=oldPos) {
+    for (int layer=-1; layer<2; layer++) {
+      renderLayer(player, tilemap, layer);
+    }
 }
 
 function renderLayer(player, map, layer) {
