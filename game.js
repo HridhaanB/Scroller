@@ -1,4 +1,4 @@
-alert("Hi!")
+alert("Hi!");
 var Keyboard = {
   L: 37,
   R: 39,
@@ -22,8 +22,11 @@ var Keyboard = {
   isDown: function(keyCode) {
     return this.keys.has(keyCode);
   }
-}
+};
 
+var Tiles = {
+  loadpic: function(tilenum, ) {}
+};
 
 
 
@@ -43,11 +46,13 @@ var tilemap = {
       return this.foreground.get([row, column]);
     }
   }
-}
+};
+
 var position = {
   x: 250,
   y:250
-}
+};
+
 var Player = {
   pos: {
     x: 250,
@@ -55,6 +60,7 @@ var Player = {
   },
   speed: 1
 };
+
 const canvasSize = c;
 const stepSize = c/10;
 
