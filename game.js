@@ -25,7 +25,14 @@ var Keyboard = {
 };
 
 var Tiles = {
-  loadpic: function(tilenum, ) {}
+  loadpic: function(tilenum, path) {
+    var image = new Image();
+    var loaded = new Promise(function(resolve, reject) {
+      img.onload = function() {
+        this.onload = function() {};
+      }
+    }
+  },
 };
 
 
