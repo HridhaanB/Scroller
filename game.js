@@ -29,12 +29,18 @@ var Tiles = {
   loadpic: function(tilenum, path) {
     var image = new Image();
     var loaded = new Promise(function(resolve, reject) {
-      img.onload = function() {
-          this.images[key] = img;
+      image.onload = function() {
+          this.images[tilenum] = image;
           resolve(img);
       }.bind(this);
-    }
+      image.onerror = reject("Image could not be loaded: " + path);
+    };
+    image.src = path;
+    return loaded;
   },
+  getTile: function(tilenum) {
+    return None;
+  }
 };
 
 
