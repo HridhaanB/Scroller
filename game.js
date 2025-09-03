@@ -1,11 +1,12 @@
 alert("Hi!");
+var tileSize = 0;
 var Keyboard = {
-  L: 37,
-  R: 39,
-  U: 38,
-  D: 40,
+  Left: 37,
+  Right: 39,
+  Up: 38,
+  Down: 40,
   keys: new Set(),
-  listen: function (keys) {
+  listen: function (keys) { //CHANGE LATER
     window.addEventListener('keydown', this.keyDown.bind(this));
     window.addEventListener('keyup', this.keyUp.bind(this));
   },
@@ -31,15 +32,18 @@ var Tiles = {
     var loaded = new Promise(function(resolve, reject) {
       image.onload = function() {
           this.images[tilenum] = image;
-          resolve(img);
+          resolve(image);
       }.bind(this);
-      image.onerror = reject("Image could not be loaded: " + path);
+      image.onerror = reject(new Error(`Image with path ${path} could not be found. Error thrown from Tiles.loadpic`));
     };
     image.src = path;
     return loaded;
   },
   getTile: function(tilenum) {
-    return None;
+    if (tilenum in images) {
+      return this.images[tilenum];
+    }
+    throw new Error(`Tile with key ${tilenum} could not be found. Error thrown from Tiles.getTile`);
   }
 };
 
@@ -52,7 +56,7 @@ var tilemap = {
   background: new Map(),
   middleground: new Map(),
   foreground: new Map(),
-  getTile: function (layer, row, column) {
+  getTileKey: function (layer, row, column) {
     if (layer===-1) {
       return this.background.get([row, column]);
     } else if (layer===0) {
@@ -80,10 +84,10 @@ const canvasSize = c;
 const stepSize = c/10;
 
 function update(player, c, s) {
-  if (Keyboard.isDown(Keyboard.L)) {player.pos.x -= s;}
-  if (Keyboard.isDown(Keyboard.R)) {player.pos.x += s;}
-  if (Keyboard.isDown(Keyboard.U)) {player.pos.y += s;}
-  if (Keyboard.isDown(Keyboard.D)) {player.pos.y -= s;}
+  if (Keyboard.isDown(Keyboard.Left)) {player.pos.x -= s;}
+  if (Keyboard.isDown(Keyboard.Right)) {player.pos.x += s;}
+  if (Keyboard.isDown(Keyboard.Up)) {player.pos.y += s;}
+  if (Keyboard.isDown(Keyboard.Down)) {player.pos.y -= s;}
 }
 
 function frame(player, c, s, tilemap) {
@@ -96,6 +100,7 @@ function frame(player, c, s, tilemap) {
 }
 
 function renderLayer(player, map, layer) {
+  /*
   var startCol = ;
   var endCol = ;
   var startRow = ;
@@ -105,4 +110,5 @@ function renderLayer(player, map, layer) {
       f
     }
   }
+  */
 }
