@@ -1,5 +1,8 @@
 alert("Hi!");
-var tileSize = 0;
+const canvas = document.getElementById("my-house");
+const ctx = canvas.getContext("2d");
+
+var tileSize = 50;
 var Keyboard = {
   Left: 37,
   Right: 39,
@@ -25,30 +28,12 @@ var Keyboard = {
   }
 };
 
-var Tiles = {
-  images: {},
-  loadpic: function(tilenum, path) {
-    var image = new Image();
-    var loaded = new Promise(function(resolve, reject) {
-      image.onload = function() {
-          this.images[tilenum] = image;
-          resolve(image);
-      }.bind(this);
-      image.onerror = reject(new Error(`Image with path ${path} could not be found. Error thrown from Tiles.loadpic`));
-    };
-    image.src = path;
-    return loaded;
-  },
-  getTile: function(tilenum) {
-    if (tilenum in images) {
-      return this.images[tilenum];
-    }
-    throw new Error(`Tile with key ${tilenum} could not be found. Error thrown from Tiles.getTile`);
-  }
-};
-
-
-
+var Tiles = new Image();
+Tiles.src = "PATH"; // Change later
+var tileDict = {}; // Add stuff later
+function drawTile(key, x, y) {
+  ctx.drawImage(Tiles,tileSize*tileDict[key],0,x,y,tileSize,tileSize);
+}
 
 var tilemap = {
   rows: 500,
