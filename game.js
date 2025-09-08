@@ -52,11 +52,6 @@ var tilemap = {
   }
 };
 
-var position = {
-  x: 250,
-  y:250
-};
-
 var Player = {
   pos: {
     x: 250,
@@ -82,6 +77,7 @@ function frame(player, c, s, tilemap) {
     for (int layer=-1; layer<2; layer++) {
       renderLayer(player, tilemap, layer);
     }
+  }
 }
 
 function renderLayer(player, map, layer) {
