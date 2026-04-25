@@ -60,8 +60,8 @@ var Player = {
   speed: 1
 };
 
-const canvasSize = c;
-const stepSize = c/10;
+const canvasSize = 600;
+const stepSize = canvasSize/10;
 
 function update(player, c, s) {
   if (Keyboard.isDown(Keyboard.Left)) {player.pos.x -= s;}
