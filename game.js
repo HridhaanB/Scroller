@@ -74,7 +74,7 @@ function frame(player, c, s, tilemap) {
   oldPos = player.pos;
   update(player, c, s);
   if (player.pos!=oldPos) {
-    for (int layer=-1; layer<2; layer++) {
+    for (let layer=-1; layer<2; layer++) {
       renderLayer(player, tilemap, layer);
     }
   }
