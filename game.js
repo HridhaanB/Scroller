@@ -1,5 +1,5 @@
 alert("Hi!");
-const canvas = document.getElementById("my-house");
+const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
 
 var tileSize = 50;
