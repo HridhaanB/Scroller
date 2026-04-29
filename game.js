@@ -79,7 +79,7 @@ function frame(player, c, s, tilemap) {
 }
 
 function drawTile(layer, row, column) {
-  ctx.drawImage(Tiles, tilemap.getTileKey(layer, row, column)*tileSize, 0, tileSize, tileSize, row*stepSize, column*stepSize, stepSize, stepSize);
+  ctx.drawImage(Tiles, tilemap.getTileKey(layer, row, column)*tileSize, 0, tileSize, tileSize, column*stepSize, row*stepSize, stepSize, stepSize);
 }
 
 function renderLayer(player, map, layer) {
