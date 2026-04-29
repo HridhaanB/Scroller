@@ -64,6 +64,7 @@ var Player = {
 
 const canvasSize = 600;
 const stepSize = canvasSize/10;
+const tileSize = 60;
 
 function update(player, c, s) {
   if (Keyboard.isDown(Keyboard.Left)) {player.pos.x -= s;}
@@ -82,8 +83,8 @@ function frame(player, c, s, tilemap) {
   }
 }
 
-function getTile(layer, row, col) {
-  return mapLayers[layer][mapLayers[0][0].length*row + col];
+function drawTile(layer, row, column) {
+  ctx.drawImage(Tiles, tilemap.getTileKey(layer, row, column)*tileSize, 0, tileSize, tileSize, row*stepSize, column*stepSize, stepSize, stepSize);
 }
 
 function renderLayer(player, map, layer) {
@@ -99,3 +100,6 @@ function renderLayer(player, map, layer) {
   }
   */
 }
+
+drawTile(-1, 0, 0);
+drawTile(-1, 0, 1);
