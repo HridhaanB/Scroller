@@ -29,11 +29,8 @@ var Keyboard = {
 };
 
 var Tiles = new Image();
-Tiles.src = "PATH"; // Change later
+Tiles.src = "tiles.png"; // Please actually make tiles
 var tileDict = {}; // Add stuff later
-function drawTile(key, x, y) {
-  ctx.drawImage(Tiles,tileSize*tileDict[key],0,x,y,tileSize,tileSize);
-}
 
 var tilemap = {
   rows: 500,
@@ -42,15 +39,20 @@ var tilemap = {
   middleground: new Map(),
   foreground: new Map(),
   getTileKey: function (layer, row, column) {
+    var stringified = row + ' ' + column
     if (layer===-1) {
-      return this.background.get([row, column]);
+      return this.background.get(stringified, 0);
     } else if (layer===0) {
-      return this.middleground.get([row, column]);
+      return this.middleground.get(stringified, 0);
     } else if (layer===1) {
-      return this.foreground.get([row, column]);
+      return this.foreground.get(stringified, 0);
     }
   }
 };
+
+function drawTile(layer, row, column, x, y) {
+  //ctx
+}
 
 var Player = {
   pos: {
@@ -78,6 +80,10 @@ function frame(player, c, s, tilemap) {
       renderLayer(player, tilemap, layer);
     }
   }
+}
+
+function getTile(layer, row, col) {
+  return mapLayers[layer][mapLayers[0][0].length*row + col];
 }
 
 function renderLayer(player, map, layer) {
