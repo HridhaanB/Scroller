@@ -40,11 +40,11 @@ var tilemap = {
   getTileKey: function (layer, row, column) {
     var stringified = row + ' ' + column
     if (layer===-1) {
-      return this.background.get(stringified, 0);
+      return this.background.get(stringified) ?? 0;
     } else if (layer===0) {
-      return this.middleground.get(stringified, 0);
+      return this.middleground.get(stringified) ?? 0; //Change Later
     } else if (layer===1) {
-      return this.foreground.get(stringified, 0);
+      return this.foreground.get(stringified) ?? 0; //Change Later
     }
   }
 };
