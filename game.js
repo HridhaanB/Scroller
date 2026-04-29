@@ -49,10 +49,6 @@ var tilemap = {
   }
 };
 
-function drawTile(layer, row, column, x, y) {
-  //ctx
-}
-
 var Player = {
   pos: {
     x: 250,
