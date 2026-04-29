@@ -83,6 +83,8 @@ function frame(player, c, s, tilemap) {
 }
 
 function drawTile(layer, row, column) {
+  console.log(tilemap.getTileKey(layer, row, column));
+  console.log(ctx.drawImage);
   ctx.drawImage(Tiles, tilemap.getTileKey(layer, row, column)*tileSize, 0, tileSize, tileSize, row*stepSize, column*stepSize, stepSize, stepSize);
 }
 
