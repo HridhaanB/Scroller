@@ -2,7 +2,6 @@ alert("Hi!");
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
 
-var tileSize = 50;
 var Keyboard = {
   Left: 37,
   Right: 39,
