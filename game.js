@@ -96,7 +96,7 @@ function renderLayer(player, map, layer) {
   */
 }
 
-drawTile(-1, 0, 0);
-drawTile(-1, 0, 1);
-
-window.addEventListener('click', () => { drawTile(0, 0, 0); });
+Tiles.onload = () => {
+  drawTile(-1, 0, 0);
+  drawTile(-1, 0, 1);
+};
