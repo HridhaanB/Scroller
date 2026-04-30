@@ -97,6 +97,9 @@ function renderLayer(player, map, layer) {
 }
 
 Tiles.onload = () => {
-  drawTile(-1, 0, 0);
-  drawTile(-1, 0, 1);
+  for (let row=0; row<60; row++) {
+    for (let col=0; col<60; col++) {
+      drawTile(-1, row, col);
+    }
+  }
 };
