@@ -49,6 +49,12 @@ var tilemap = {
   }
 };
 
+var camera = {
+  width: 10;
+  height: 10;
+  pos: 5; // fix
+}
+
 var Player = {
   pos: {
     x: 250,
