@@ -50,9 +50,9 @@ var tilemap = {
 };
 
 var camera = {
-  width: 10;
-  height: 10;
-  pos: 5; // fix
+  width: 10,
+  height: 10,
+  pos: 5 // fix
 }
 
 var Player = {
