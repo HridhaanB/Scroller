@@ -14,6 +14,7 @@ var Keyboard = {
   },
   keyDown: function(event) {
     var keyCode = event.keyCode;
+    console.log(keyCode);
     event.preventDefault();
     this.keys.add(keyCode);
   },
